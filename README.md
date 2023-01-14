@@ -20,6 +20,8 @@ https://languagelearning.stackexchange.com/questions/2916/spanish-english-downlo
 [Spanish words and English translations] Word format in XML though, but not a dealbreaker. Otherwise, not a bad list. Would have used this one if I did not compile my own. Future plans to maybe implement these translations into my current dictionary
 https://github.com/mananoreboton/en-es-en-Dic
 
+***^Update: I have converted the above dictionaries from XML to CSV files and parsed them to combine duplicate entries into single entries. They can be found in the folder "mananoreboton dictionaries"***
+
 #### A massive list of 636k Spanish words:
 [Wordlist only] This didn’t seem reliable. Many of the words were unknown to me or online translators. The Github labels this file itself as “Experimental Español”. 
 https://github.com/lorenbrichter/Words
