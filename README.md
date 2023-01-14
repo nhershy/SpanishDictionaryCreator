@@ -54,9 +54,11 @@ https://en.wiktionary.org/wiki/Help:FAQ#Downloading_Wiktionary
 ### How
 1. Corpus Building: I used [Sketch Engine](https://app.sketchengine.eu)to scrape through the internet and find Spanish words. I had to feed the software certain search criteria, and then it “did its thang”. About 2.5 million words alone came from crawling through Spanish Yahoo News articles. Another 1.5 million words came from Spanish ebook files I uploaded. The other 3 millions words were just aimlessly crawling around the Spanish internet based on random seed search criteria I gave it, like: magdalena (“cupcake”), perro, familia, amor, feliz, tecnologia, filosofia, Elon Musk, etc.  After a few days of loading, I generated my own Spanish corpus of 7+ million words. These are modern, relevant, and actually used Spanish words. I can objectively confirm this. I have a "frequency" counter of how many times a certain word was encountered during the searching. Fun fact: the Spanish word "de" is by far the most used Spanish word. It came in at 442k hits. Whereas the second most used Spanish word is "la”, at about half of the usage. 
 
+![Screenshot](readme_files/word_frequence.jpg)
+
 2. Data Cleansing: Once I had my word list, it was time to do some data cleansing (or “removing the fat”, as I like to call it. That’s literally my functions’ name hehe)
 
-[image:6DFC315E-591D-419A-A9D5-B6DEF13BFE83-4090-000006B37202C757/5566A656-2FC1-457C-A4FB-7D730FBE5379.png]
+
 
 I built a Python program to remove the fat. I removed random characters, emojis, numbers, and non-Spanish words. To detect non-Spanish words, I used the most accurate Python library I could get my hands on: [Lingua](https://github.com/pemistahl/lingua-py).  
 
