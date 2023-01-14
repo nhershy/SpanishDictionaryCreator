@@ -1,0 +1,7 @@
+About:
+
+These dictionary files were obtained from: https://github.com/mananoreboton/en-es-en-Dic
+
+I have converted these dictionaries from XML to CSV, and parsed them to combine duplicate entries into single entries
+
+-Hershy
