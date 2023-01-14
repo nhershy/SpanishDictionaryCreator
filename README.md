@@ -54,11 +54,27 @@ https://en.wiktionary.org/wiki/Help:FAQ#Downloading_Wiktionary
 ### How
 1. Corpus Building: I used [Sketch Engine](https://app.sketchengine.eu)to scrape through the internet and find Spanish words. I had to feed the software certain search criteria, and then it “did its thang”. About 2.5 million words alone came from crawling through Spanish Yahoo News articles. Another 1.5 million words came from Spanish ebook files I uploaded. The other 3 millions words were just aimlessly crawling around the Spanish internet based on random seed search criteria I gave it, like: magdalena (“cupcake”), perro, familia, amor, feliz, tecnologia, filosofia, Elon Musk, etc.  After a few days of loading, I generated my own Spanish corpus of 7+ million words. These are modern, relevant, and actually used Spanish words. I can objectively confirm this. I have a "frequency" counter of how many times a certain word was encountered during the searching. Fun fact: the Spanish word "de" is by far the most used Spanish word. It came in at 442k hits. Whereas the second most used Spanish word is "la”, at about half of the usage. 
 
-![Screenshot](readme_files/word_frequence.jpg)
+<p align="center">
+  <img src="readme_files/word_frequence.jpg" />
+</p>
 
-2. Data Cleansing: Once I had my word list, it was time to do some data cleansing (or “removing the fat”, as I like to call it. That’s literally my functions’ name hehe)
+2. Data Cleansing: Once I had my word list, it was time to do some data cleansing (or “removing the fat”, as I like to call it. Literally.)
 
-
+```python
+def removeTheFat(word):
+    if isEmoji(word):
+        return ""
+    elif containsSpecialCharacters(word):
+        return ""
+    elif hasNumbers(word):
+        return ""
+    elif isVosotrosForm(word):
+        return ""
+    elif isNonSpanishWord(word):
+        return ""
+    else:
+        return word
+```
 
 I built a Python program to remove the fat. I removed random characters, emojis, numbers, and non-Spanish words. To detect non-Spanish words, I used the most accurate Python library I could get my hands on: [Lingua](https://github.com/pemistahl/lingua-py).  
 
@@ -71,9 +87,17 @@ The program is uploaded here in its final form. The program went through several
 ### Setbacks
 Some of the translators sucked. Particularly the MultiDictionary API. It kept giving errors and I reached  its daily limits very quickly. Google Translate API   also had very low daily limits that I exceeded quickly. DeepL and PonsTranslator were the powerhouses of this project. I also found a workaround with the Google Translate API. So instead of calling the API thousands of times and reaching the API limits before I had given it even 5% of my words, I took a CSV file with all my Spanish words and uploaded it to Google Translate website, and it gave me back the file all in English. 
 
+<p align="center">
+  <img src="readme_files/google_translate.jpg" />
+</p>
+
 ### Conclusion
 After parsing, lemmatizing, removing junk and non-Spanish words,  my dictionary contains a total of 49,525 entries. Before all the cleaning and lemmatizing it was 3x larger than that. That’s not to say there’s not still junk in there. A quick look will show that there’s still conjugated verbs, weird slang, and other foreign words contained in it. There is certainly improvement to be had. But at least we know we’re working with modern Spanish words that are in use. Additionally, I’ve added a field called “Prevalence” that shows a decimal value from 0 to 1 for each word. The higher the value, the more it is used currently in modern, 2023 Spanish. This way you can judge for yourself if you are using a suitable word or one that’s obsolete. 
 
 The dictionary file is named spanish_dictionary.csv and is available to anyone. Recommend opening it in a universal CSV reader to view it properly. (I noticed Excel doesn’t do well with Spanish accent marks)
+
+<p align="center">
+  <img src="readme_files/dictionary_sample.jpg" />
+</p>
 
 *This project was never meant to replace translators like Google Translate or other tools that harness machine learning and AI techniques. Google Translate can take into account the entire sentence and translate each word based on context from its surroundings. My dictionary doesn’t do that. It just has a single semantic chunk. My purpose had nothing to do with competing with those tools. 
